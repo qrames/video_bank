@@ -1,0 +1,5 @@
+/node_modules/
+*.pyc
+/media/
+/video_bank/password.py
+db.sqlite3
