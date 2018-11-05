@@ -18,7 +18,27 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
+# Create :
+from bank.views import AddMovie
+# Read :
+from bank.views import DetailMovie, ListMovies
+# Update :
+from bank.views import UpdateMovie
+# Delete :
+from bank.views import DeleteMovie
+
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('userena.urls')),
+    url(r'^customers/', include('userena.urls')),
+
+    url(r'^movie/add/$', AddMovie.as_view(), name="add-movie"),
+    url(r'^movie/(?P<slug>[-\w]+)$', DetailMovie.as_view(), name="detail-movie"),
+    url(r'^movies/$', ListMovies.as_view(), name="detail-movie"),
+    url(r'^movie/Update$', UpdateMovie.as_view(), name="update-movie"),
+
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

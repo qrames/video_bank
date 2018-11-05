@@ -1,0 +1,28 @@
+{% extends "bank/base.html" %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+<section class="card-article">
+    {% for movie in object_list %}
+        <article class="card">
+            <h2>
+                <a href={% url 'detail-movie' movie.slug %}>
+                    {{movie.title}}
+                </a>
+            </h2>
+            <sub>{{movie.length}}</sub>
+            <h3>
+                De :{{movie.director}}
+            </h3>
+            <h4>
+                Nationalité: {{movie.country}}
+            </h4>
+            <p><strong>synopsis : </strong>{{movie.synopsis}}</p>
+
+        </article>
+    {% endfor %}
+</section>
+{% endblock %}

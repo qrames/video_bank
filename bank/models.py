@@ -9,6 +9,7 @@ from django.db import models
 
 from userena.models import UserenaBaseProfile
 
+
 # Create your models here.
 
 class Customer(UserenaBaseProfile):
@@ -46,7 +47,7 @@ class Movie(models.Model):
     genre =  models.ManyToManyField(MovieGenre)
 
     def __unicode__(self):
-        return "%s de : %s" % (self.title.upper(), self.director)
+        return '"%s" de : %s' % (self.title.upper(), self.director)
 
 
 class MovieRent(models.Model):
