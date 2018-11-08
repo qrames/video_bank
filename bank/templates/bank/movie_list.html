@@ -1,16 +1,20 @@
 {% extends "bank/base.html" %}
 
-{% block header %}
-
-{% endblock %}
 
 {% block content %}
 <section class="card-article">
     {% for movie in object_list %}
         <article class="card">
+            <iframe width="400" height="225" src={{ movie.trailer_url }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <h2>
                 <a href={% url 'detail-movie' movie.slug %}>
                     {{movie.title}}
+                </a>
+                <a href={% url 'update-movie' movie.slug %}>
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
+                <a href={% url 'delete-movie' movie.slug %}>
+                    <i class="fas fa-times"></i>
                 </a>
             </h2>
             <sub>{{movie.length}}</sub>

@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    <form class="" action="." method="post">
+    <form class="" action="." method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
+        <button type="submit" name="submit">Ajouter</button>
     </form>
 {% endblock %}

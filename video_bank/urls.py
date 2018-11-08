@@ -1,4 +1,4 @@
-"""video_bank URL Configuration
+wo"""video_bank URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -23,7 +23,8 @@ from django.conf.urls.static import static
 # Create :
 from bank.views import AddMovie
 # Read :
-from bank.views import DetailMovie, ListMovies
+from bank.views import DetailMovie
+from bank.views import ListMovies, ListRentedMovies
 # Update :
 from bank.views import UpdateMovie
 # Delete :
@@ -36,9 +37,18 @@ urlpatterns = [
     url(r'^customers/', include('userena.urls')),
 
     url(r'^movie/add/$', AddMovie.as_view(), name="add-movie"),
-    url(r'^movie/(?P<slug>[-\w]+)$', DetailMovie.as_view(), name="detail-movie"),
-    url(r'^movies/$', ListMovies.as_view(), name="detail-movie"),
-    url(r'^movie/Update$', UpdateMovie.as_view(), name="update-movie"),
+    url(r'^movie/(?P<slug>[-\w]+)/$', DetailMovie.as_view(), name="detail-movie"),
 
+    url(r'^$', ListMovies.as_view(), name="movies"),
+    url(r'^movies/list/$', ListRentedMovies.as_view(), name="admin-movies"),
+
+    url(r'^movie/(?P<slug>[-\w]+)/Update/$', UpdateMovie.as_view(), name="update-movie"),
+    url(r'^movie/(?P<slug>[-\w]+)/delete/$', DeleteMovie.as_view(), name="delete-movie"),
+
+
+    url(r'^login/$', auth_views.LoginView.as_view(), name="login"),
+    url(r'^logout/$',
+        auth_views.LogoutView.as_view(next_page='/'),
+        name="logout"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

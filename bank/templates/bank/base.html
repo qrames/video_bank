@@ -8,10 +8,9 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <title>vidéo</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static '@fortawesome/fontawesome-free/css/all.min.css' %}">
+   <link rel="stylesheet" href="{% static 'css/reset.css' %}">
    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-   <link rel="stylesheet" href="{% static 'css/jquery.autocomplete.css' %}">
-   <link rel="stylesheet" href="{% static 'x-editable/dist/jquery-editable/js/jquery-editable-poshytip.min.js' %}">
 
 </head>
 {% endblock %}
@@ -19,6 +18,7 @@
 <body>
    <div id="page" class="container container-fluid">
         {% block header %}
+            {% include "bank/header.html" %}
         {% endblock %}
 
        <main>
@@ -31,9 +31,6 @@
 
    {% block script %}
     <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-    <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/jquery.formset.js' %}"></script>
-    <script type="text/javascript" src="{% static 'x-editable/dist/jquery-editable/js/jquery-editable-poshytip.min.js' %}"> </script>
     <script src="{% static 'js/base.js' %}"></script>
     {% endblock %}
 

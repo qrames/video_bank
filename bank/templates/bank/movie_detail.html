@@ -1,4 +1,9 @@
-<article class="">
+{% extends "bank/base.html" %}
+
+
+{% block content %}
+<article class="detail">
+    <iframe width="708" height="398" src={{ movie.trailer_url }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <h2>
         {{movie.title}}
     </h2>
@@ -10,5 +15,6 @@
         Nationalité: {{movie.country}}
     </h4>
     <p><strong>synopsis : </strong>{{movie.synopsis}}</p>
-
 </article>
+
+{% endblock %}
