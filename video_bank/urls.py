@@ -21,7 +21,7 @@ from django.contrib.auth import views as auth_views
 
 
 # Create :
-from bank.views import AddMovie
+from bank.views import AddMovie, CreateCustomerViews
 # Read :
 from bank.views import DetailMovie
 from bank.views import ListMovies, ListRentedMovies
@@ -34,8 +34,11 @@ from bank.views import DeleteMovie
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^customers/', include('userena.urls')),
+    url(r'^customers/', include('userena.urls'), name="user"),
 
+
+
+#CRUD Movie :
     url(r'^movie/add/$', AddMovie.as_view(), name="add-movie"),
     url(r'^movie/(?P<slug>[-\w]+)/$', DetailMovie.as_view(), name="detail-movie"),
 

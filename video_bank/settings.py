@@ -49,13 +49,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    # my app :
+    'bank',
     #userena :
     'django.contrib.sites',
     'userena',
     'guardian',
     'easy_thumbnails',
-    # my app :
-    'bank',
 ]
 
 MIDDLEWARE = [

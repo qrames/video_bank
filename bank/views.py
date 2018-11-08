@@ -9,7 +9,7 @@ from django.shortcuts import render, reverse
 #CRUD  C(Create) R(List Detail) U(Update) D(Delete)
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
-from models import Movie
+from models import Movie, Customer
 # Create your views here.
 
 class AddMovie(CreateView):
@@ -54,3 +54,8 @@ class UpdateMovie(UpdateView):
 class DeleteMovie(DeleteView):
     model = Movie
     success_url  = "movies"
+
+
+class CreateCustomerViews(CreateView):
+    model = Customer
+    fields = "__all__"
