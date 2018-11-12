@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -21,7 +22,7 @@ from django.contrib.auth import views as auth_views
 
 
 # Create :
-from bank.views import AddMovie, CreateCustomerViews
+from bank.views import AddMovie, CreateCustomerViews, CreateMovieRentViews
 # Read :
 from bank.views import DetailMovie
 from bank.views import ListMovies, ListRentedMovies
@@ -30,28 +31,31 @@ from bank.views import UpdateMovie
 # Delete :
 from bank.views import DeleteMovie
 
-
-
-urlpatterns = [
+urlpatterns = i18n_patterns(
     url(r'^admin/', admin.site.urls),
-    url(r'^customers/', include('userena.urls'), name="user"),
+    url(r'^$', ListMovies.as_view(), name="movies"),
+
+    url(r'^accounts/', include('userena.urls')),
 
 
-
-#CRUD Movie :
+    #CRUD Movie :
     url(r'^movie/add/$', AddMovie.as_view(), name="add-movie"),
     url(r'^movie/(?P<slug>[-\w]+)/$', DetailMovie.as_view(), name="detail-movie"),
 
-    url(r'^$', ListMovies.as_view(), name="movies"),
     url(r'^movies/list/$', ListRentedMovies.as_view(), name="admin-movies"),
 
     url(r'^movie/(?P<slug>[-\w]+)/Update/$', UpdateMovie.as_view(), name="update-movie"),
     url(r'^movie/(?P<slug>[-\w]+)/delete/$', DeleteMovie.as_view(), name="delete-movie"),
 
 
+    # url(r'^rent/(?P<slug>[-\w]+)/$', CreateMovieRentViews.as_view(), name="rent"),
+    #
     url(r'^login/$', auth_views.LoginView.as_view(), name="login"),
     url(r'^logout/$',
-        auth_views.LogoutView.as_view(next_page='/'),
-        name="logout"),
+    auth_views.LogoutView.as_view(next_page='/'),
+    name="logout"),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

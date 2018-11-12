@@ -66,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'video_bank.urls'
@@ -123,8 +124,19 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
+from django.utils.translation import ugettext_lazy as _
 
-LANGUAGE_CODE = 'fr-fr'
+LOCALE_PATHS = ( os.path.join( BASE_DIR, 'locale'),)
+
+LANGUAGE_CODE = 'fr-FR'
+
+LANGUAGES = [
+    ('fr', _('Francais')),
+    ('en', _('Anglais')),
+
+]
+
+
 
 TIME_ZONE = 'UTC'
 

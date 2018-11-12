@@ -9,7 +9,7 @@ from django.shortcuts import render, reverse
 #CRUD  C(Create) R(List Detail) U(Update) D(Delete)
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
-from models import Movie, Customer
+from models import Movie, Customer, MovieRent
 # Create your views here.
 
 class AddMovie(CreateView):
@@ -32,13 +32,22 @@ class ListRentedMovies(ListView):
     model = Movie
     template_name = "bank/admin_movie_list.html"
 
+    # def get_context_data(self, *args, **kwargs):
+    #     context = super(ListRentedMovies, self).get_context_data(*args, **kwargs)
+    #     for movie in context['movie_list'] :
+    #         if movie.rented :
+    #             movie_rent = MovieRent.objects.get(movie=movie)
+    #             print "[%s loue le filme : %s]"  %(movie_rent.customer.user, movie_rent.movie.title)
+    #
+    #     return context
+    #
     def get_queryset(self):
         rented = self.request.GET.get('rented', None)
         print "QUERY=", rented
 
         if rented != None:
 
-            return Movie.objects.filter(Q(rented=False))
+            return Movie.objects.filter(Q(rented=True))
 
         else:
             return Movie.objects.all()
@@ -58,4 +67,9 @@ class DeleteMovie(DeleteView):
 
 class CreateCustomerViews(CreateView):
     model = Customer
+    fields = "__all__"
+
+
+class CreateMovieRentViews(CreateView):
+    model = MovieRent
     fields = "__all__"
