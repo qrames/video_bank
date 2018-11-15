@@ -1,23 +1,25 @@
 {% extends "bank/base.html" %}
-{% load i18n parler_tags %}
+
 
 {% block content %}
-<section class="card-article">
+<form id="rended_form" class="" action="." method="get">
+    <label for="rented">Rendu :</label>
+    <input type="checkbox" id="rented" name="rented" checked />
+    <button type="submit" name="submit">rechercher</button>
+</form>
+<section class="">
     {% for movie in object_list %}
-        <article class="card">
-            <iframe width="400" height="225" src={{ movie.trailer_url }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <article class="">
             <h2>
-                <a href={% url 'detail-movie' movie|get_translated_field:'slug' %}>
+                <a href={% url 'detail-movie' movie.slug %}>
                     {{movie.title}}
                 </a>
-                {% if user.is_staff %}
-                <a href={% url 'update-movie' movie|get_translated_field:'slug' %}>
+                <a href={% url 'update-movie' movie.slug %}>
                     <i class="fas fa-pencil-alt"></i>
                 </a>
-                <a href={% url 'delete-movie' movie|get_translated_field:'slug' %}>
+                <a href={% url 'delete-movie' movie.slug %}>
                     <i class="fas fa-times"></i>
                 </a>
-                {% endif %}
             </h2>
             <sub>{{movie.length}}</sub>
             <h3>

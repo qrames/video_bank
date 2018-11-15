@@ -55,6 +55,7 @@ urlpatterns = i18n_patterns(
     auth_views.LogoutView.as_view(next_page='/'),
     name="logout"),
 
+url(r'^i18n/', include('django.conf.urls.i18n')),
 )
 
 

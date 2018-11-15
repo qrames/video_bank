@@ -1,0 +1,21 @@
+
+
+iframe {
+    max-width: 100vw;
+}
+.big-text {
+    font-size: 2.5em;
+}
+
+.dropdown > ul{
+  display: none;
+}
+.dropdown:hover > ul{
+  display: block;
+  height: 5rem;
+}
+
+@import "mobile";
+@import "750";
+@import "950";
+@import "1024";

@@ -9,10 +9,12 @@ from django.shortcuts import render, reverse
 #CRUD  C(Create) R(List Detail) U(Update) D(Delete)
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
+from parler.views import TranslatableSlugMixin, TranslatableCreateView
+
 from models import Movie, Customer, MovieRent
 # Create your views here.
 
-class AddMovie(CreateView):
+class AddMovie(TranslatableCreateView):
     model = Movie
     fields = "__all__"
 
@@ -20,9 +22,9 @@ class AddMovie(CreateView):
         return reverse("detail-movie", args=[self.object.slug])
 
 
-class DetailMovie(DetailView):
+class DetailMovie(TranslatableSlugMixin, DetailView):
     model = Movie
-
+    
 
 class ListMovies(ListView):
     model = Movie
@@ -53,14 +55,14 @@ class ListRentedMovies(ListView):
             return Movie.objects.all()
 
 
-class UpdateMovie(UpdateView):
+class UpdateMovie(TranslatableSlugMixin, UpdateView):
     model = Movie
     fields = "__all__"
     def get_success_url(self):
         return reverse("detail-movie", args=[self.object.slug])
 
 
-class DeleteMovie(DeleteView):
+class DeleteMovie(TranslatableSlugMixin, DeleteView):
     model = Movie
     success_url  = "movies"
 

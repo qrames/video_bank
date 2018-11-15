@@ -1,0 +1,23 @@
+{
+  "name": "video_bank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qrames/video_bank.git"
+  },
+  "author": "quentin rames",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qrames/video_bank/issues"
+  },
+  "homepage": "https://github.com/qrames/video_bank#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.5.0",
+    "jquery": "^3.3.1"
+  }
+}

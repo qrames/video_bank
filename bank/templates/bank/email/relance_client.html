@@ -1,0 +1,25 @@
+{% extends "mail_templated/base.tpl" %}
+{% load i18n parler_tags %}
+
+{% block subject %}
+Hello {{ customer.first_name }} {{ customer.last_name }}
+{% endblock %}
+
+{% block body %}
+{{ customer.first_name }} {{ customer.last_name }}, this is a plain text message.
+{% endblock %}
+
+{% block html %}
+<h1>
+  {% trans "Bonjour" %}{{ customer.first_name }} {{ customer.last_name }},
+</h1>
+<h2>
+  {% trans "Attentions certaine de vos locations on depassé la date de retour." %}
+</h2>
+<p>{% trans "Merci de les retourner au plus tôt en magasin." %}</p>
+<ul>
+{% for movie in movies %}
+  <li><h3>{{movie.title}}</h3> de {{movie.director}}</li>
+{% endfor %}
+</ul>
+{% endblock %}

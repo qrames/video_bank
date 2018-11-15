@@ -1,0 +1,139 @@
+iframe {
+  max-width: 100vw;
+}
+
+.big-text {
+  font-size: 2.5em;
+}
+
+.dropdown > ul {
+  display: none;
+}
+
+.dropdown:hover > ul {
+  display: block;
+  height: 5rem;
+}
+
+body {
+  background-color: #17141f;
+  color: #e3e3e3;
+}
+
+main a {
+  color: #BF7524;
+}
+main a:visited {
+  color: #D4832A;
+}
+main a:hover {
+  color: #FFFFFF;
+}
+
+article.detail iframe {
+  display: block;
+  max-width: 94vw;
+  max-height: 50vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+article.detail p {
+  text-align: justify;
+  line-height: 1.8rem;
+}
+
+section.card-article {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 2rem;
+}
+section.card-article article.card {
+  padding-bottom: 2rem;
+  background: #000000;
+  min-height: 225px;
+}
+section.card-article article.card h2 {
+  min-width: 50px;
+}
+section.card-article article.card > h2, section.card-article article.card > h3, section.card-article article.card > h4, section.card-article article.card > p, section.card-article article.card > a, section.card-article article.card > sub {
+  line-height: 1.3rem;
+  margin-left: 0.5rem;
+}
+
+nav {
+  width: 100%;
+  background-color: rgba(0, 86, 189, 0.26);
+}
+nav > ul {
+  padding: 0;
+}
+nav > ul > li {
+  margin: 1rem auto;
+  list-style: none;
+  text-align: center;
+}
+nav > ul > li:hover {
+  background-color: rgba(255, 255, 255, 0.44);
+}
+nav > ul > li > a {
+  line-height: 1.5rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #d9d9d9;
+}
+
+@media screen and (min-width: 750px) {
+  nav {
+    width: 100%;
+  }
+  nav > ul {
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+  nav > ul > li {
+    margin: 1rem 1rem;
+    list-style: none;
+    text-align: center;
+  }
+  nav > ul > li > a {
+    line-height: 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #d9d9d9;
+  }
+  nav > ul > li > a > ul {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  nav > ul > li > a > ul > li {
+    margin: 1rem 1rem;
+    list-style: none;
+    text-align: center;
+  }
+  nav > ul > li > a > ul > li > a {
+    line-height: 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #d9d9d9;
+  }
+}
+@media screen and (min-width: 950px) {
+  section.card-article {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 1024px) {
+  article.detail iframe {
+    display: inline-block;
+    float: left;
+    border: solid 5px white;
+    margin-left: 0;
+    margin-right: 2rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

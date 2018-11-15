@@ -1,0 +1,10 @@
+{% extends "bank/base.html" %}
+
+
+{% block content %}
+
+<form class="" action="." method="post">
+    {% csrf_token %}
+    <button type="submit" name="submit">delete</button>
+</form>
+{% endblock %}

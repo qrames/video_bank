@@ -49,6 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    #Translator
+    'parler',
+    # mail
+    'mail_templated',
     # my app :
     'bank',
     #userena :
@@ -136,6 +140,16 @@ LANGUAGES = [
 
 ]
 
+PARLER_LANGUAGES = {
+    1: (
+        {'code': 'fr',},
+        {'code': 'en',},
+    ),
+    'default': {
+        'fallback': 'fr',             # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+        'hide_untranslated': False,   # the default; let .active_translations() return fallbacks too.
+    }
+}
 
 
 TIME_ZONE = 'UTC'

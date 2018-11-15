@@ -5,9 +5,10 @@ from django.contrib import admin
 
 from models import Movie, MovieGenre, MovieRent
 # Register your models here.
+from parler.admin import TranslatableAdmin
 
 
-class MovieAdmin(admin.ModelAdmin):
+class MovieAdmin(TranslatableAdmin):
     models = Movie
 
 

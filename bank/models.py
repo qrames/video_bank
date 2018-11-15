@@ -9,6 +9,8 @@ from django.db import models
 
 from userena.models import UserenaBaseProfile
 
+from parler.models import TranslatableModel, TranslatedFields
+from django.shortcuts import reverse
 
 # Create your models here.
 
@@ -27,27 +29,33 @@ class MovieGenre(models.Model):
         return self.label
 
 
-class Movie(models.Model):
+class Movie(TranslatableModel):
     actors = models.CharField(verbose_name=_('Acteurs'), max_length=200, null=True)
-    country = models.CharField(verbose_name=_('Pays'), max_length=100, null=True)
     director = models.CharField(verbose_name=_('directeur'), max_length=100, null=False)
-    title = models.CharField(verbose_name=_('titre'), max_length=200, null=False)
 
     picture = models.ImageField(verbose_name=_('Affiche du film'))
 
     length = models.TimeField(verbose_name=_('Durée'), auto_now=False, auto_now_add=False)
-
     release_date = models.DateField(auto_now=False, auto_now_add=False)
     rented = models.BooleanField(verbose_name=_('En Location'),)
 
-    slug = AutoSlugField(populate_from='title')
+
 
     trailer_url = models.URLField(max_length=200, null=True, blank=True)
-    synopsis = models.TextField(verbose_name=_('synopsis'), null=True)
-    genre =  models.ManyToManyField(MovieGenre)
+
+    translation = TranslatedFields(
+        country = models.CharField(verbose_name=_('Pays'), max_length=100, null=True),
+        title = models.CharField(verbose_name=_('titre'), max_length=200, null=True),
+        slug = AutoSlugField(populate_from='title', null=False, blank=False, unique=True),
+        synopsis = models.TextField(verbose_name=_('synopsis'), null=True),
+        genre =  models.ManyToManyField(MovieGenre)
+    )
 
     def __unicode__(self):
         return '"%s" de : %s' % (self.title.upper(), self.director)
+
+    def get_absolute_url(self):
+        return reverse('detail-movie', args=[self.slug] )
 
 
 class MovieRent(models.Model):

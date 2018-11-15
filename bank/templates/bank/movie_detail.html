@@ -1,4 +1,5 @@
 {% extends "bank/base.html" %}
+{% load i18n parler_tags %}
 
 
 {% block content %}
@@ -15,7 +16,7 @@
         Nationalité: {{movie.country}}
     </h4>
     <p><strong>synopsis : </strong>{{movie.synopsis}}</p>
-    <a href={% url 'rent' %}></a>
+    <a href={ % url 'rent' %}></a>
 </article>
 
 {% endblock %}

@@ -1,0 +1,14 @@
+@media screen and (min-width: 1024px) {
+
+    article.detail {
+        iframe {
+            display: inline-block;
+            float: left;
+            border: solid 5px white;
+            margin-left: 0;
+            margin-right: 2rem;
+        }
+    }
+
+
+}//@media
